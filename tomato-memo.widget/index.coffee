@@ -8,7 +8,8 @@ top = 220
 screen_width = 315
 screen_height = 315
 bulletPoint = "∆" # This is the symbol used as a trailing point for all tasks 
-# refresh_Frequency: 10 # The smaller the number, the faster it'll refresh 
+max_tasks = 10 # How many tasks would you like to add to the list
+refreshFrequency: 1*60000 # 60000 means 1 minute, you can choose how fast it should update its content. Faster update will drain battery faster
 
 # ------------------------------------------------------------------
 
@@ -19,7 +20,6 @@ root.tasks = []
 root.taskList = []
 root.readingFile = true
 
-max_tasks = 10
 todolistfile = "./.todo.txt" # File names that start with '.' are hidden files 
 tomatofile = "./.totomato.txt"
 
@@ -109,8 +109,6 @@ update: (output, newContent) ->
   $(newContent).find('.txt-title').text("- " + title + " -") 
 
   @updateText(i, tasks, newContent) for i in [0..(max_tasks - 1)]
-
-refreshFrequency: 1*60000
 
 style: """
 
